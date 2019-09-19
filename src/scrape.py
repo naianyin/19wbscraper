@@ -1,4 +1,4 @@
-from bs4 import BeautifulSoup as bs
+#from bs4 import BeautifulSoup as bs
 import requests as rq
 import datetime
 import urllib.parse as ups
@@ -9,12 +9,14 @@ def currentts(digits):
 
 def prelogin(uname):
 
-	return "https://login.sina.com.cn/sso/prelogin.php?checkpin=1&entry=mweibo&su="+ b64.b64encode(bytes(ups.quote(uname),"utf-8")).decode("utf-8") +"&callback="+currentts(13)
+	return "https://login.sina.com.cn/sso/prelogin.php?checkpin=1&entry=mweibo&su="+ \
+		b64.b64encode(bytes(ups.quote(uname),"utf-8")).decode("utf-8") +"&callback="+currentts(13)
 
 
 uname=""
 pwd=""
-headers={'Content-Type': 'application/x-www-form-urlencoded', 'Origin': 'https://passport.weibo.cn', 'Referer': 'https://passport.weibo.cn/signin/login', 'Sec-Fetch-Mode': 'cors', \
+headers={'Content-Type': 'application/x-www-form-urlencoded', 'Origin': 'https://passport.weibo.cn', \
+	 'Referer': 'https://passport.weibo.cn/signin/login', 'Sec-Fetch-Mode': 'cors', \
 	'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36'}
 data=bytes("username="+ups.quote(uname)+"&password=" + ups.quote(pwd) + \
 	"&savestate=1&r=&ec=0&pagerefer=&entry=mweibo&wentry=&loginfrom=&client_id=&code=&qq=&mainpageflag=1&hff=&hfp=","utf-8")
